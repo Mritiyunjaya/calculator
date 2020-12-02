@@ -1,0 +1,156 @@
+<!doctype html>  
+<html>  
+  
+    <head>  
+        <title>Javascript Calculator</title>  
+     
+<link rel="stylesheet" href="cal1.css">
+</head>
+
+     <body>
+     	
+
+<div class="calculator">
+
+  <!-- the solid area -->
+  <input type="text" id="result">
+
+  <!-- the buttons area-->
+  <div class="calculator-buttons">
+
+    <button class="calc-button is-clear" onclick="clr()">C</button>
+    <button class="calc-button" onclick="operator('/')">&divide;</button>
+
+    <button class="calc-button" onclick="operend('7')">7</button>
+    <button class="calc-button" onclick="operend('8')">8</button>
+    <button class="calc-button" onclick="operend('9')">9</button>
+    <button class="calc-button" onclick="operator('*')">&times;</button>
+
+    <button class="calc-button" onclick="operend('4')">4</button>
+    <button class="calc-button" onclick="operend('5')">5</button>
+    <button class="calc-button" onclick="operend('6')">6</button>
+    <button class="calc-button" onclick="operator('-')">&minus;</button>
+
+    <button class="calc-button" onclick="operend('1')">1</button>
+    <button class="calc-button" onclick="operend('2')">2</button>
+    <button class="calc-button" onclick="operend('3')">3</button>
+    <button class="calc-button" onclick="operator('+')">&plus;</button>
+
+    <button class="calc-button is-zero" onclick="operend('0')">0</button>
+    <button class="calc-button is-equals" onclick="operator(' ')">&equals;</button>
+  </div>
+  
+</div>
+
+
+<script>
+
+
+var displ=' ';
+var old=0;
+var result=0;
+var op='+';
+var display1=''
+ 
+
+
+function operend(val) 
+{
+	       displ+=val; 
+            document.getElementById('result').value=displ;
+            document.getElementById('result').value= display1+displ;
+
+
+        }
+
+function operator(oper)
+{
+
+if(op=='=')
+{
+
+  switch(op) 
+  {
+    case '+':
+            result=parseInt(parseInt(old)+parseInt(displ));
+            display1=result;
+            break;
+    case '-':
+            result=parseInt(parseInt(old)-parseInt(displ));
+            display1=result;
+            break;
+    case '*':
+            result=parseInt(parseInt(old)*parseInt(displ));
+            display1=result;
+            break;
+    case '/':
+            result=parseFloat(parseFloat(old)/parseFloat(displ));
+            display1=result;
+            break;
+    default:
+            break;
+ 
+
+  } 
+
+
+}
+
+else
+{
+
+  switch(op) 
+  {
+    case '+':
+            result=parseInt(parseInt(old)+parseInt(displ));
+            display1=result+oper;
+            break;
+    case '-':
+            result=parseInt(parseInt(old)-parseInt(displ));
+            display1=result+oper;
+            break;
+  case '*':
+            result=parseInt(parseInt(old)*parseInt(displ));
+            display1=result+oper;
+            break;
+   case '/':
+            result=parseFloat(parseFloat(old)/parseFloat(displ));
+            display1=result+oper;
+            break;
+   case '=':
+            document.getElementById('result').value=displ;
+            break;
+
+      default:
+            display1=result+oper;
+            break;
+
+  } 
+
+}
+
+  
+
+  document.getElementById('result').value=display1;
+  old=result;
+  displ='';
+op=oper;
+
+}        
+
+function clr()
+{
+
+document.getElementById("result").value =" ";
+ displ=' ';
+ old=0;
+display1='';
+ op='+';
+}
+
+</script>
+
+     </body>
+      
+ 
+</html>
